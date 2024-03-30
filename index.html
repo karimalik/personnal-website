@@ -50,6 +50,7 @@
   <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 
   <link rel="stylesheet" href="css/main.css" />
+  <style id="theme-style"></style>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBYB5MK388"></script>
@@ -278,7 +279,6 @@
             <li><span class="iconify" data-icon="logos:typescript" data-inline="false"></span></li>
             <li><span class="iconify" data-icon="logos:nodejs" data-inline="false"></span></li>
             <li><span class="iconify" data-icon="logos:mysql" data-inline="false"></span></li>
-            <li><span class="iconify" data-icon="logos:express" data-inline="false"></span></li>
             <li><span class="iconify" data-icon="logos:swagger" data-inline="false"></span></li>
           </ul>
           <p>Task Manager is a task management api developed with typescript, nodejs, swagger (for documentation), mysql
@@ -384,8 +384,8 @@
   <!-- CONTACT -->
   <section id="contact" class="contact">
     <div class="container">
-      <h2 class="section-title main-font" data-aos="fade-in">Contact <span class="text-blue main-font">Me</span></h2>
-      <div class="card-container">
+      <h2 class="section-title main-font" data-aos="fade-in"><span id="title">Contact</span> <span class="text-blue main-font">Me</span></h2>
+      <div class="card-container" id="cards">
         <div class="card" data-aos="fade-in">
           <i class="fas fa-envelope"></i>
           <h3>Email</h3>
@@ -405,7 +405,7 @@
 
       <form id="contact-form" data-aos="zoom-in" data-aos-delay="300" action="https://formspree.io/f/xjvnaerq"
         method="POST">
-        <h2 class="main-font">Send <span class="text-blue main-font">Message</span></h2>
+        <h2 class="main-font"><span id="title">Send</span> <span class="text-blue main-font">Message</span></h2>
 
         <div class="form-group">
           <input type="text" id="name" name="name" placeholder="Name" required>
@@ -493,6 +493,38 @@
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
+  </script>
+  <script>
+    const themes = {
+
+      dark: `
+                body {
+                    background-color: black;
+                    color: white;
+                }
+                .projects {
+                  background-color: black !important;
+                  color: white;
+                }
+                #cards {
+                  color: black;
+                }
+                #title{
+                  color: black;
+                }
+            `,
+      
+    }
+
+    function changeTheme() {
+      const themeStyle = document.getElementById('theme-style');
+      const currentTheme = themeStyle.innerHTML === themes.dark ? 'light' : 'dark';
+      const newTheme = currentTheme === 'dark' ? 'dark' : 'light';
+      themeStyle.innerHTML = themes[newTheme];
+    }
+
+    // Appliquer le thème par défaut
+    document.getElementById('theme-style').innerHTML = themes.dark;
   </script>
 
 </body>
